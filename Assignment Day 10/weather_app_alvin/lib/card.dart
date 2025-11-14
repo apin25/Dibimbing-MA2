@@ -8,18 +8,17 @@ Widget weatherInfoBox({
   required String wind,
   required Color textColor,
 }) {
-  final double boxWidth = MediaQuery.of(context).size.width * 0.75;
+  final width = MediaQuery.of(context).size.width * 0.8;
 
   return SizedBox(
-    height: 180, // Tinggi area Stack
+    height: 180,
     child: Stack(
       clipBehavior: Clip.none,
       children: [
-        // BACK CARD
         Positioned(
           child: Container(
             height: 120,
-            width: boxWidth,
+            width: width-4,
             decoration: BoxDecoration(
               color: Colors.white.withValues(alpha: 0.40),
               borderRadius: BorderRadius.circular(36),
@@ -27,58 +26,47 @@ Widget weatherInfoBox({
           ),
         ),
 
-
         Positioned(
           top: 20,
           left: 20,
           child: Container(
-            width: boxWidth,
-            padding: const EdgeInsets.symmetric(vertical: 28, horizontal: 20),
+            width: width-4,
+            height:120,
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
             decoration: BoxDecoration(
               color: Colors.white.withValues(alpha: 0.72),
               borderRadius: BorderRadius.circular(32),
             ),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
-                  children: [
-                    Text("UV Index",
-                        style: customTheme.textTheme.titleMedium!
-                            .copyWith(color: textColor)),
-                    const SizedBox(height: 6),
-                    Text(uvIndex,
-                        style: customTheme.textTheme.bodyMedium!
-                            .copyWith(color: textColor)),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Text("Humidity",
-                        style: customTheme.textTheme.titleMedium!
-                            .copyWith(color: textColor)),
-                    const SizedBox(height: 6),
-                    Text(humidity,
-                        style: customTheme.textTheme.bodyMedium!
-                            .copyWith(color: textColor)),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Text("Wind",
-                        style: customTheme.textTheme.titleMedium!
-                            .copyWith(color: textColor)),
-                    const SizedBox(height: 6),
-                    Text(wind,
-                        style: customTheme.textTheme.bodyMedium!
-                            .copyWith(color: textColor)),
-                  ],
-                ),
+                Expanded(child: _item("UV Index", uvIndex, textColor)),
+                Expanded(child: _item("Humidity", humidity, textColor)),
+                Expanded(child: _item("Wind", wind, textColor)),
               ],
             ),
           ),
         ),
       ],
     ),
+  );
+}
+
+Widget _item(String label, String value, Color color) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Text(
+        label,
+        textAlign: TextAlign.center,
+        style: customTheme.textTheme.titleMedium!.copyWith(color: color),
+        overflow: TextOverflow.ellipsis, // Prevent text overflow
+      ),
+      const SizedBox(height: 6),
+      Text(
+        value,
+        style: customTheme.textTheme.bodyMedium!.copyWith(color: color),
+      ),
+    ],
   );
 }

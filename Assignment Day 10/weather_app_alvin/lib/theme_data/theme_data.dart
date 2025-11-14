@@ -35,20 +35,20 @@ final ThemeData customTheme = ThemeData(
     ),
     // Ini cuaca
     titleMedium: TextStyle(
-      fontSize: 24,
+      fontSize: 18,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
     // Lokasi dan info lainnya
     bodyMedium: TextStyle(
-      fontSize: 20,
+      fontSize: 14.8,
       fontWeight: FontWeight.w600,
     ),
     // Label kecil di kotak info
     labelLarge: TextStyle(
-      fontSize: 24,
-      fontWeight: FontWeight.w500,
-      color: Colors.black54,
+      fontSize: 32,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
       letterSpacing: 0.2,
     ),
   ),

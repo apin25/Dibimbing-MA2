@@ -131,7 +131,7 @@ Widget _forecastItem(String day, Widget icon, String temp) {
         child: SingleChildScrollView(
           child: Column(
           children: [
-            SizedBox(height: 24),
+            SizedBox(height: 60),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32),
               child: Row(
@@ -153,13 +153,13 @@ Widget _forecastItem(String day, Widget icon, String temp) {
               ),
             ),
           Transform.translate(
-            offset: Offset(0, -60), 
+            offset: Offset(0, -40), 
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 if (weatherList.isNotEmpty) ...[
                   _getIconByCondition(context, weatherList[currentIndex].kondisi),
-                  Text(weatherList[currentIndex].kondisi, style: customTheme.textTheme.titleMedium),
+                  Text(weatherList[currentIndex].kondisi, style: customTheme.textTheme.labelLarge),
                   Text("${weatherList[currentIndex].suhu}°", style: customTheme.textTheme.headlineLarge),
                 ],
                 Row(
@@ -195,7 +195,7 @@ Widget _forecastItem(String day, Widget icon, String temp) {
                           itemBuilder: (context, index) {
                             final data = weatherList[index];
                             return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8),
+                              padding: const EdgeInsets.symmetric(horizontal: 4),
                               child: weatherInfoBox(
                                 context: context,
                                 uvIndex: data.uvIndex.toString(),
@@ -214,9 +214,9 @@ Widget _forecastItem(String day, Widget icon, String temp) {
             ),
           ),
           Transform.translate(
-            offset: Offset(0, -100), // naikin forecast biar lebih dekat
+            offset: Offset(0, -60), 
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 40, top: 10),
+              padding: const EdgeInsets.only(bottom: 10, top: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
