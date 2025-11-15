@@ -157,7 +157,7 @@ Widget _forecastItem(String day, Widget icon, String temp) {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                if (weatherList.isNotEmpty) ...[
+                if (weatherList.isNotEmpty && currentIndex < weatherList.length) ...[
                   _getIconByCondition(context, weatherList[currentIndex].kondisi),
                   Text(weatherList[currentIndex].kondisi, style: customTheme.textTheme.labelLarge),
                   Text("${weatherList[currentIndex].suhu}°", style: customTheme.textTheme.headlineLarge),
@@ -213,22 +213,24 @@ Widget _forecastItem(String day, Widget icon, String temp) {
               ],
             ),
           ),
-          Transform.translate(
-            offset: Offset(0, -60), 
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 10, top: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _forecastItem("Now", _getSmallIcon(weatherList[currentIndex].kondisi), "${weatherList[currentIndex].suhu}°"),
-                  _forecastItem("Jan 7", Icon(WeatherIcons.day_fog, color: Colors.white, size: 26), "14°"),
-                  _forecastItem("Jan 8", Icon(WeatherIcons.storm_showers, color: Colors.white, size: 26), "18°"),
-                  _forecastItem("Jan 9", Icon(WeatherIcons.cloud, color: Colors.white, size: 26), "17°"),
-                  _forecastItem("Jan 10", Icon(WeatherIcons.day_sunny, color: Colors.white, size: 26), "15°"),
-                ],
+          if (weatherList.isNotEmpty && currentIndex < weatherList.length)
+            Transform.translate(
+              offset: Offset(0, -60),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10, top: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _forecastItem("Now", _getSmallIcon(weatherList[currentIndex].kondisi),
+                        "${weatherList[currentIndex].suhu}°"),
+                    _forecastItem("Jan 7", Icon(WeatherIcons.day_fog, color: Colors.white, size: 26), "14°"),
+                    _forecastItem("Jan 8", Icon(WeatherIcons.storm_showers, color: Colors.white, size: 26), "18°"),
+                    _forecastItem("Jan 9", Icon(WeatherIcons.cloud, color: Colors.white, size: 26), "17°"),
+                    _forecastItem("Jan 10", Icon(WeatherIcons.day_sunny, color: Colors.white, size: 26), "15°"),
+                  ],
+                ),
               ),
             ),
-          ),
           ],
         ),
       ),
