@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_note/db_helper.dart';
 import 'package:flutter_note/firestore_helper.dart';
 import 'package:flutter_note/models/note_model.dart';
 import 'package:flutter_note/pages/note_editor_page.dart';
@@ -27,7 +26,7 @@ class _NoteListPageState extends State<NoteHomePage> {
   Future<void> _loadNotes() async {
     // TODO: Load notes from database
     // Simulating database with sample data
-    final noteList = await fsHelper.getAllNotes();
+    final noteList = await fsHelper.fetchNotes();
 
     setState(() {
       _notes = noteList;
@@ -104,7 +103,7 @@ class _NoteListPageState extends State<NoteHomePage> {
     return Scaffold(
       appBar: AppBar(title: const Text('My Notes'), elevation: 0),
       body: StreamBuilder(
-      stream: fsHelper.getAllNotesRealTime(),
+      stream: fsHelper.getNoteStream(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());

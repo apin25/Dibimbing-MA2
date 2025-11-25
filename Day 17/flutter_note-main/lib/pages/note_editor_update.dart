@@ -5,7 +5,7 @@ import 'package:flutter_note/models/note_model.dart';
 class NoteEditorUpdate extends StatefulWidget {
   final NoteModel note;
 
-  const NoteEditorUpdate({Key? key, required this.note}) : super(key: key);
+  const NoteEditorUpdate({super.key, required this.note});
 
   @override
   State<NoteEditorUpdate> createState() => _NoteEditorUpdateState();
