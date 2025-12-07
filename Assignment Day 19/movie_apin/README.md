@@ -1,16 +1,5 @@
-# movie_apin
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# PENJELASAN FITUR
+1. Ada homepage yang isinya popular movie
+2. Untuk melihat infinite scrollable bisa tekan see all di home page
+3. Di homepage ada filter yang berguna untuk filtering per genre, nanti pas tekan see all dia auto terfilter berdasarkan genre (saya kurang tau kalo dari sisi UX bener atau tidak)
+4. Untuk melihat detail bisa tekan dimanapun
